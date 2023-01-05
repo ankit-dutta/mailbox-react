@@ -1,11 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useRef } from 'react';
+import React, { useState , useRef} from 'react'
 import { Button, Card } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { authActions } from '../../store/authreducer';
 import './Signup.css';
 
 const Signup =() =>{
+   const history = useHistory();
+   const dispatch = useDispatch()
+
    const [isLogin, setIsLogin] = useState(false)
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -17,10 +22,10 @@ const Signup =() =>{
         
         let url;
        if(isLogin){
-        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD5_fGuAHEjwOyBmThyEGH3o1KY4lz_T9k`
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`
 
        }else{
-        url =  `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD5_fGuAHEjwOyBmThyEGH3o1KY4lz_T9k`
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_KEY}`
 
        }
 
@@ -33,10 +38,11 @@ const Signup =() =>{
                 alert("Password did not match");
                 return;
             }
+        }
 
             //POST REQUEST FOR SIGNED UP
             axios.post(url,{
-                email : enteredEmail,
+                email: enteredEmail,
                 password: enteredPass,
                 returnSecureToken: true,
             }).then((response)=>{
@@ -45,19 +51,85 @@ const Signup =() =>{
                     const email = response.data.email;
                     localStorage.setItem('token',token);
                     localStorage.setItem('email',email);
+                    dispatch(authActions.login({
+                        token,
+                        email
+                    }))
 
                     console.log("User successfully Signed up");
+                    history.replace('/welcome');
                     // alert("logged In")
                 }
             }).catch((error)=>{
                 alert("Authentication Failed");
+                console.log(error)
             })
+
+
+
+
+
+
+
+
+    // const enteredEmail = emailRef.current.value
+    //   const enteredPassword = passwordRef.current.value
+    //   // const enteredCnfrmPassword = confrmPasswordRef.current.value
+    //   // console.log(enteredEmail , enteredCnfrmPassword, enteredPassword);
+
+    // //   setIsLoading(true)
+    //   let url;
+
+    //   if(isLogin){
+    //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`
+    //   } else{
+    //     url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_KEY}`
+    //   }
+      
+    //      fetch(url,{
+    //       method:"POST",
+    //       body:JSON.stringify({
+    //         email:enteredEmail,
+    //         password:enteredPassword,
+    //         returnSecureToken: true
+    //       }),
+    //       headers:{
+    //         'Content-Type' : 'application/json'
+    //       }
+    //      }).then(res =>{
+    //     //   setIsLoading(false)
+    //       if(res.ok){
+    //         console.log("successfully registered")
+    //         return res.json();
+  
+    //       }else{
+    //       return  res.json().then(data =>{
+    //         console.log(data)
+    //         let errorMessage = 'Authentication failed';
+    //         if(data && data.error && data.error.message){
+    //           errorMessage = data.error.message
+    //         }
+
+    //           throw new Error(errorMessage);
+
+    //         })
+    //       }
+    //      }).then(data => {
+    //       console.log(data)
+    //       localStorage.setItem("email", enteredEmail);
+
+    //       console.log('succesfully login')
+    //       // authctx.login(data.idToken)
+    //     //   dispatch(authActions.login(data.idToken))
+    //        history.push("/welcome")
+    //      }).catch(err =>{
+    //         alert(err.message)
+    //      })
+      
+
+      
+
         }
-      
-
-      
-
-    }
 
     const switchLoginHandler = () =>{
         setIsLogin((prevState)=> !prevState)

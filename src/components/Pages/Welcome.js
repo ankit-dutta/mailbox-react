@@ -1,7 +1,16 @@
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 const Welcome = () =>{
     return(
         <>
-        <h1>welcome Page</h1>
+       
+       <div>
+            <h1>Welcome to your mailbox!!</h1>
+            <Link to='/compose-mail' variant="success" >
+                Go to MailBox
+            </Link>
+       </div>
         </>
     )
 }

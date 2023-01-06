@@ -31,10 +31,10 @@ const ComposeMail = () =>{
         const enteredEmail = emailInputRef.current.value;
         dispatch(composeMail(enteredEmail, editortext))
 
+        event.target.reset();
+
         setEditorText("")
         console.log("submit");
-
-        event.target.reset();
     }
 
     return(

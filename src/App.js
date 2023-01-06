@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router';
 import './App.css';
 import Header from './components/Layout/Header';
 import ComposeMail from './components/Pages/ComposeMail';
+import Inbox from './components/Pages/Inbox';
 import Signup from './components/Pages/Signup';
 import Welcome from './components/Pages/Welcome';
 
@@ -26,6 +27,11 @@ function App() {
           <Route path='/compose-mail' exact >
             <ComposeMail />
           </Route>
+
+          <Route path='/inbox' exact >
+            <Inbox />
+          </Route>
+
         </Switch>
         </div>
     

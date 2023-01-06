@@ -1,0 +1,21 @@
+.inbox-container{
+    border: 1px solid red;
+    /* display: flex;
+    gap: 5rem; */
+    /* height: 100vh; */
+}
+.sidebar-container {
+   border: 1px solid black;
+   width: 15%;
+   height: 50vh;
+   padding: 5px;
+   text-align: center;
+}
+
+.composemail-btn{
+    background-color: rgb(1, 132, 255);
+    width: 10rem;
+    padding: 3px;
+    height:2.7rem;
+    border-radius: 1px;
+}

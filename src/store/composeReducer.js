@@ -36,6 +36,11 @@ const composeSlice = createSlice({
       const id = action.payload;
       const newInbox = [...state.receivedData];
       state.receivedData = newInbox.filter((ele)=>ele.id !== id);
+    },
+    deleteSentMail(state, action){
+      const id = action.payload;
+      const newSentbox = [...state.receivedData];
+      state.receivedData = newSentbox.filter((ele)=>ele.id !== id)
     }
   }
 })

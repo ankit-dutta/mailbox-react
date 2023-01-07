@@ -7,6 +7,9 @@ import './Mailbox.css';
 
 const Mailbox = () =>{
 
+   const isLogin = useSelector((state)=>state.auth.isAuthenticated);
+
+
     const history = useHistory();
 
     const receivedData = useSelector((state)=>state.compose.receivedData);
@@ -24,7 +27,7 @@ const Mailbox = () =>{
 
   
 
-    <div>
+   {isLogin && <div>
         <ul  className="side-list">
             <li>
                <NavLink  to={'/compose-mail'}><Button className={'compose-btn'}>Compose</Button></NavLink>
@@ -51,7 +54,7 @@ const Mailbox = () =>{
             </li>
 
         </ul>
-    </div>
+    </div>}
     
     </>
     )

@@ -7,7 +7,7 @@ const Welcome = () =>{
        
        <div>
             <h1>Welcome to your mailbox!!</h1>
-            <Link to='/mailbox' variant="success" >
+            <Link to='/inbox' variant="success" >
                 Go to MailBox
             </Link>
        </div>

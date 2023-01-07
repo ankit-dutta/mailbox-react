@@ -59,8 +59,8 @@
 }
 
 .content-container{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 70%;
   padding: 5rem;
-  margin-left: -3rem;
+  
 }

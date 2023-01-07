@@ -1,16 +1,18 @@
 import { Button, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () =>{
-
+  const isLogin = useSelector((state)=>state.auth.isAuthenticated)
+  console.log(isLogin , 'islogin');
   const history = useHistory();
 
     const logoutHandler = () => {
       localStorage.clear();
-      history.replace("/");
+      history.push("/");
     };
     
           return (
@@ -27,10 +29,10 @@ const Header = () =>{
               </Navbar> */}
 
 
-    <Nav className="bg-dark d-md sidebar navbar ">
-          <NavbarBrand>MailBox</NavbarBrand>
+    <Nav className="bg-dark d-md sidebar navbar p-3 ">
+          <NavbarBrand><strong style={{color:"white"}}>MailBox</strong></NavbarBrand>
            <Button onClick={logoutHandler} variant="warning">
-             Logout
+             {isLogin ? 'Logout' : 'Login'}
            </Button>
     </Nav>
               

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,32 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.main-container{
+  /* First way ----*/
+  /* display: inline-flex;
+  flex-wrap: wrap;
+  gap:100px */
+
+  /* Second way ------*/
+  /* height: 100vh; */
+  display: flex;
+  gap: 5%;
+  
+}
+.sidebar-section{
+  width: 15rem;
+  height: 94vh;
+   background-color: rgb(201, 199, 199);
+  /* background-color: gray; */
+  box-shadow: 2px 2px 6px black;
+}
+
+.content-container{
+  border: 1px solid red;
+  width: 70%;
+  padding: 5rem;
+  margin-left: -3rem;
 }

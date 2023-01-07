@@ -11,12 +11,16 @@ const Inbox = () =>{
     const receivedData = useSelector((state)=>state.compose.receivedData);
     const dispatch = useDispatch();
 
-    console.log(receivedData , 'receivedData')
+    // console.log(receivedData , 'receivedData')
 
     useEffect(()=>{
         // console.log('useEffect CAlled')
         dispatch(fetchReceivedMail());
     },[dispatch])
+
+    const mailDeleteHandler = () =>{
+      console.log("delete");
+    }
 
 
     const receivedmessages = receivedData.map((data)=>{
@@ -27,30 +31,33 @@ const Inbox = () =>{
         return(
             <>
       <div>
-        {/* <Container> */}
-          <Row xs={3} className="bg-light border p-3">
+        <Container className="inb-container">
+          <Row xs={3}  className="bg-light border-bottom p-3 ">
             <Col xs={1}>
               <div className={data.read ? "read" : "status"}></div>
             </Col>
+
             <Link to={{ pathname: url, state: data }}>
               <Col>
                 <div>From:{data.From}</div>
               </Col>
             </Link>
+
             <Col xs={3}>
               <div>Message:{data.message}</div>
             </Col>
             <Col>
               <Button
-                
+                 onClick = {mailDeleteHandler}
                 variant="danger"
                 className="deletebtn"
               >
-                Delete
+               <i class="fa fa-trash" aria-hidden="true"></i>
+
               </Button>
             </Col>
           </Row>
-        {/* </Container> */}
+        </Container>
       </div>
 
             </>
@@ -66,22 +73,23 @@ const Inbox = () =>{
 			<div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
 		  </div> */}
         
-
+        <div>
+          <h1><u><strong>INBOX</strong></u></h1>
+        </div>
 
           
 
-<Container>
-        <Row className="justify-content-md-evenly">
-            <Col md='auto' sm = {1}>
-               <div className="compose-mail">
-                    <Link to = '/compose-mail'><Button className="composemail-btn">Compose</Button></Link>
+
+   
+
+       
+            <Col > 
+                <div className="mt-5 ">
+                   {receivedmessages}
                 </div>
-            </Col>
-
-
-            <Col sm={10}>  {receivedmessages}</Col>
-        </Row>
-</Container>      
+              </Col>
+      
+     
          
         </>
     )

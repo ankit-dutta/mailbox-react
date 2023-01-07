@@ -10,11 +10,11 @@ const composeSlice = createSlice({
             mail : action.payload.mail,
             message : action.payload.message,
         };
-        console.log(state.sent);
+        // console.log(state.sent);
     },
     fetchSentData(state,action){
       state.sentData = action.payload;
-      console.log(state.sentData , 'sent data');
+      // console.log(state.sentData , 'sent data');
     },
     fetchReceivedData(state, action){
       state.receivedData = action.payload;

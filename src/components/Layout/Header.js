@@ -1,13 +1,21 @@
-import { Navbar, NavLink } from 'react-bootstrap';
+import { Button, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import { useHistory } from 'react-router-dom';
 // import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () =>{
+
+  const history = useHistory();
+
+    const logoutHandler = () => {
+      localStorage.clear();
+      history.replace("/");
+    };
     
           return (
             <>
-              <Navbar bg="dark" variant="dark">
+              {/* <Navbar bg="dark" variant="dark">
                 <Container>
                   <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                   <Nav className="me-auto">
@@ -16,7 +24,15 @@ const Header = () =>{
                     <NavLink href="#pricing">Pricing</NavLink>
                   </Nav>
                 </Container>
-              </Navbar>
+              </Navbar> */}
+
+
+    <Nav className="bg-dark d-md sidebar navbar ">
+          <NavbarBrand>MailBox</NavbarBrand>
+           <Button onClick={logoutHandler} variant="warning">
+             Logout
+           </Button>
+    </Nav>
               
             </>
           );

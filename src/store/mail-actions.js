@@ -47,7 +47,7 @@ export const readMessage = (data) =>{
                 }
             );
             if(sent.status === 200){
-                console.log(sent.data);
+                // console.log(sent.data);
                 dispatch(composeActions.onRead(data.id))
             }
         }
@@ -63,7 +63,7 @@ export const fetchSentMail = () =>{
             const response = await axios.get(`https://mail-client-react-default-rtdb.firebaseio.com/${mail}.json`
 
             );
-            console.log(response.data);
+            // console.log(response.data);
 
             let data = [];
 
@@ -77,7 +77,7 @@ export const fetchSentMail = () =>{
                     })
                 }
             }
-            console.log(data , 'data mailaction');
+            // console.log(data , 'data mailaction');
             return data;
         }
         const data = await fetchData();
@@ -93,7 +93,7 @@ export const fetchReceivedMail = () =>{
             const response = await axios.get(`https://mail-client-react-default-rtdb.firebaseio.com/${mail}.json`
 
             );
-            console.log(response.data , 'fetchreceived data');
+            // console.log(response.data , 'fetchreceived data');
 
             let data = [];
 
@@ -107,7 +107,7 @@ export const fetchReceivedMail = () =>{
                     })
                 }
             }
-            console.log(data , 'fetch receive data');
+            // console.log(data , 'fetch receive data');
             return data;
         }
         const data = await fetchData();

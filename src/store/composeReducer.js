@@ -30,6 +30,12 @@ const composeSlice = createSlice({
       });
 
       state.receivedData = existing;
+    },
+
+    deleteInbox(state,action){
+      const id = action.payload;
+      const newInbox = [...state.receivedData];
+      state.receivedData = newInbox.filter((ele)=>ele.id !== id);
     }
   }
 })

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchReceivedMail } from "../../store/mail-actions";
+import { deleteMessage, fetchReceivedMail } from "../../store/mail-actions";
 
 import './Inbox.css';
 
@@ -18,8 +18,8 @@ const Inbox = () =>{
         dispatch(fetchReceivedMail());
     },[dispatch])
 
-    const mailDeleteHandler = () =>{
-      console.log("delete");
+    const mailDeleteHandler = (id) =>{
+      dispatch(deleteMessage(id))
     }
 
 
@@ -48,7 +48,7 @@ const Inbox = () =>{
             </Col>
             <Col>
               <Button
-                 onClick = {mailDeleteHandler}
+                 onClick = {()=> mailDeleteHandler(data.id)}
                 variant="danger"
                 className="deletebtn"
               >

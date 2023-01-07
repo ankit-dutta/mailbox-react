@@ -115,3 +115,18 @@ export const fetchReceivedMail = () =>{
     
     }
 }
+
+export const deleteMessage = (id) =>{
+    return async (dispatch) =>{
+        const email = localStorage.getItem('email');
+        const mail = email.replace(/[^a-zA-Z0-9]/g, "");
+        const response = await axios.delete(
+            `https://mail-client-react-default-rtdb.firebaseio.com/${mail}/${id}.json`,
+        );
+
+        if(response.status === 200){
+            console.log(response , "delete");
+            dispatch(composeActions.deleteInbox(id));
+        }
+    }
+}

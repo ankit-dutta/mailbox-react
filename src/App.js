@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import './App.css';
 import Header from './components/Layout/Header';
@@ -10,10 +10,22 @@ import MessageBox from './components/Pages/MessageBox';
 import SentMail from './components/Pages/SentMail';
 import Signup from './components/Pages/Signup';
 import Welcome from './components/Pages/Welcome';
+import { fetchReceivedMail, fetchSentMail } from './store/mail-actions';
 
 function App() {
 
   const isLogin = useSelector((state)=>state.auth.isAuthenticated);
+
+  const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   setInterval(()=>{
+  //     console.log('interval')
+  //     // console.log(fetchSentMail)
+  //     dispatch(fetchSentMail());
+  //     dispatch(fetchReceivedMail);
+  //   },(2000))
+  // },[dispatch])
 
   return (
     <>

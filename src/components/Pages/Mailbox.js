@@ -42,15 +42,15 @@ const Mailbox = () =>{
             </li>
 
             <li>
-               <NavLink className={'side-content'}  to={'/sent'}>Starred</NavLink>
+               <NavLink className={'side-content'}  to={'/sent'}>Starred ❌</NavLink>
             </li>
 
             <li>
-               <NavLink className={'side-content'}  to={'/sent'}>Drafts</NavLink>
+               <NavLink className={'side-content'}  to={'/sent'}>Drafts ❌</NavLink>
             </li>
 
             <li>
-               <NavLink className={'side-content'}  to={'/sent'}>Archive</NavLink>
+               <NavLink className={'side-content'}  to={'/sent'}>Archive ❌</NavLink>
             </li>
 
         </ul>
